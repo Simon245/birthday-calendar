@@ -5,7 +5,10 @@
       <div>
         {{ person.firstname }} {{ person?.lastname }}
         <span *ngIf="person.year">({{ getAge(person) }})</span> -
-        {{ getFromNow(person) }} days until birthday
+        <ng-container *ngIf="getFromNow(person) !== 0; else happyBirthday"
+          >{{ getFromNow(person) }} days until birthday</ng-container
+        >
+        <ng-template #happyBirthday>Happy Birthday</ng-template>
       </div>
     </div>
   </div>

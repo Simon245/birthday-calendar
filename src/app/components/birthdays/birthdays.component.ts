@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { Person } from 'src/app/models/person';
 import { SessionService } from 'src/app/services/session.service';
 import * as dayjs from 'dayjs';
@@ -16,9 +17,16 @@ export class BirthdaysComponent implements OnInit {
   constructor(private sessionService: SessionService) {}
 
   ngOnInit() {
-    this.sessionService.getPeople().subscribe((people: Person[]) => {
-      this.people = people;
-    });
+    this.sessionService
+      .getPeople()
+      .pipe(
+        map((person) =>
+          person.sort((a, b) => this.getFromNow(a) - this.getFromNow(b)),
+        ),
+      )
+      .subscribe((people: Person[]) => {
+        this.people = people;
+      });
   }
 
   getFromNow(person: Person): number {
@@ -37,7 +45,11 @@ export class BirthdaysComponent implements OnInit {
       d: person.day,
     });
 
-    return nextBirthday.diff(this.today, 'day');
+    if (birthday.isSame(this.today)) {
+      return 0;
+    } else {
+      return nextBirthday.diff(this.today, 'day');
+    }
   }
 
   getAge(person: Person): number {
