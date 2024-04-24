@@ -1,7 +1,7 @@
 export interface Person {
   firstname: string;
-  lastname: string;
+  lastname?: string;
   day: number;
   month: number;
-  year: number;
+  year?: number;
 }
