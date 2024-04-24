@@ -12,6 +12,7 @@ dayjs.extend(objectSupport);
 })
 export class BirthdaysComponent implements OnInit {
   people: Person[] = [];
+  today = dayjs().startOf('day');
   constructor(private sessionService: SessionService) {}
 
   ngOnInit() {
@@ -20,8 +21,7 @@ export class BirthdaysComponent implements OnInit {
     });
   }
 
-  getFromNow(person: Person): any {
-    const today = dayjs().startOf('day');
+  getFromNow(person: Person): number {
     const birthday = dayjs({
       y: dayjs().year(),
       M: person.month,
@@ -30,13 +30,23 @@ export class BirthdaysComponent implements OnInit {
 
     const nextBirthday = dayjs({
       y:
-        birthday.diff(today) > 0
+        birthday.diff(this.today) > 0
           ? dayjs().format('YYYY')
           : dayjs().add(1, 'year').format('YYYY'),
       M: person.month,
       d: person.day,
     });
 
-    return nextBirthday.diff(today, 'day');
+    return nextBirthday.diff(this.today, 'day');
+  }
+
+  getAge(person: Person): number {
+    const birthday = dayjs({
+      y: person.year,
+      M: person.month,
+      d: person.day,
+    });
+
+    return this.today.diff(birthday, 'years');
   }
 }
