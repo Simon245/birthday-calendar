@@ -2,3 +2,8 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+@import "assets/css/variables";
+body {
+  color: $body-color;
+  background-color: $background;
+}
