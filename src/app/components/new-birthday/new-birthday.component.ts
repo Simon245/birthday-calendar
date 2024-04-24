@@ -24,8 +24,11 @@ export class NewBirthdayComponent implements OnInit {
     this.newPersonForm = this.fb.group({
       firstName: [{ value: null, disabled: false }, Validators.required],
       lastName: [{ value: null, disabled: false }],
-      day: [{ value: 1, disabled: false }, Validators.required],
-      month: [{ value: 1, disabled: false }, Validators.required],
+      day: [{ value: dayjs().date(), disabled: false }, Validators.required],
+      month: [
+        { value: dayjs().month() + 1, disabled: false },
+        Validators.required,
+      ],
       year: [{ value: null, disabled: false }],
     });
   }
