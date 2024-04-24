@@ -27,4 +27,10 @@ export class SessionService {
   getPeople(): Observable<Person[]> {
     return this.people$;
   }
+
+  setPeople(person: Person): void {
+    const people = this.people$.getValue();
+    people.push(person);
+    this.people$.next(people);
+  }
 }

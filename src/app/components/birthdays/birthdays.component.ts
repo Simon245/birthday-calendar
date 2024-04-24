@@ -24,7 +24,7 @@ export class BirthdaysComponent implements OnInit {
   getFromNow(person: Person): number {
     const birthday = dayjs({
       y: dayjs().year(),
-      M: person.month,
+      M: person.month - 1,
       d: person.day,
     });
 
@@ -33,7 +33,7 @@ export class BirthdaysComponent implements OnInit {
         birthday.diff(this.today) > 0
           ? dayjs().format('YYYY')
           : dayjs().add(1, 'year').format('YYYY'),
-      M: person.month,
+      M: person.month - 1,
       d: person.day,
     });
 
@@ -43,7 +43,7 @@ export class BirthdaysComponent implements OnInit {
   getAge(person: Person): number {
     const birthday = dayjs({
       y: person.year,
-      M: person.month,
+      M: person.month - 1,
       d: person.day,
     });
 

@@ -1,7 +1,10 @@
 <div class="card">
   <div class="card-body">
     <h2>New Birthday</h2>
-    <form [formGroup]="newPersonForm" (ngSubmit)="handleFormSubmit()">
+    <form
+      [formGroup]="newPersonForm"
+      (ngSubmit)="handleFormSubmit(newPersonForm.value)"
+    >
       <div class="mb-3">
         <label class="form-label"
           >First Name <span class="text-danger">*</span></label
@@ -50,12 +53,19 @@
             class="form-control"
             formControlName="year"
           >
+            <option [ngValue]="null">None</option>
             <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
           </select>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="newPersonForm.invalid || !validDate"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </div>
