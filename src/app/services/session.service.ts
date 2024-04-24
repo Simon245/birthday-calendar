@@ -13,7 +13,7 @@ export class SessionService {
         firstname: 'Simon',
         lastname: 'Ball',
         day: 9,
-        month: 2,
+        month: 1,
         year: 1986,
       },
       {
