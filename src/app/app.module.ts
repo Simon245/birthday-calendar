@@ -5,9 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
+import { BirthdaysComponent } from './components/birthdays/birthdays.component';
+import { NewBirthdayComponent } from './components/new-birthday/new-birthday.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    BirthdaysComponent,
+    NewBirthdayComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
