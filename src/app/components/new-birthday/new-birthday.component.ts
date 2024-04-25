@@ -22,8 +22,8 @@ export class NewBirthdayComponent implements OnInit {
     private sessionService: SessionService,
   ) {
     this.newPersonForm = this.fb.group({
-      firstName: [{ value: null, disabled: false }, Validators.required],
-      lastName: [{ value: null, disabled: false }],
+      firstName: [{ value: '', disabled: false }, Validators.required],
+      lastName: [{ value: '', disabled: false }],
       day: [{ value: dayjs().date(), disabled: false }, Validators.required],
       month: [
         { value: dayjs().month() + 1, disabled: false },
@@ -58,5 +58,15 @@ export class NewBirthdayComponent implements OnInit {
       year: formValues.year ? formValues.year : null,
     };
     this.sessionService.setPeople(person);
+
+    this.newPersonForm.setValue({
+      firstName: '',
+      lastName: '',
+      day: dayjs().date(),
+      month: dayjs().month() + 1,
+      year: null,
+    });
+
+    this.newPersonForm.markAsUntouched();
   }
 }
