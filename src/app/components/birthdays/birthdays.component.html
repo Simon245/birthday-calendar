@@ -1,14 +1,23 @@
-<div class="card">
+<div class="card h-100">
   <div class="card-body">
     <h2>Birthdays</h2>
-    <div *ngFor="let person of people">
-      <div>
+    <div
+      class="bg-light border-black border-bottom"
+      *ngFor="let person of people"
+    >
+      <div
+        class="p-2"
+        [ngClass]="{ 'bg-success text-white': getFromNow(person) === 0 }"
+      >
         {{ person.firstname }} {{ person?.lastname }}
         <span *ngIf="person.year">({{ getAge(person) }})</span> -
         <ng-container *ngIf="getFromNow(person) !== 0; else happyBirthday"
           >{{ getFromNow(person) }} days until birthday</ng-container
         >
-        <ng-template #happyBirthday>Happy Birthday</ng-template>
+        <ng-template #happyBirthday
+          >Happy Birthday
+          <span class="ms-2"><i class="bi bi-cake2-fill"></i></span
+        ></ng-template>
       </div>
     </div>
   </div>
