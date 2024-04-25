@@ -61,4 +61,8 @@ export class BirthdaysComponent implements OnInit {
 
     return this.today.diff(birthday, 'years');
   }
+
+  clearMockData() {
+    this.sessionService.clearMockData();
+  }
 }
