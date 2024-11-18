@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Person } from 'src/app/models/person';
-import * as dayjs from 'dayjs';
+import { Person } from '../../app/models/person';
+import dayjs from 'dayjs';
 
 @Injectable({
   providedIn: 'root',

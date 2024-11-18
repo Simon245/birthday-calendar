@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { Person } from 'src/app/models/person';
 import { SessionService } from 'src/app/services/session.service';
-import * as dayjs from 'dayjs';
-import * as objectSupport from 'dayjs/plugin/objectSupport';
+import dayjs from 'dayjs';
+import objectSupport from 'dayjs/plugin/objectSupport';
 dayjs.extend(objectSupport);
 
 @Component({
