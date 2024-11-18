@@ -1,5 +1,9 @@
 # BirthdayCalendar
 
+Angular test project. A simple calendar app to display birthday information, birthdays today and days until the next birthday.
+
+Hosted on [Netlify](https://heartfelt-biscochitos-9ab001.netlify.app/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
 
 Node version 18.10.0 with an nvmrc file to manage with nvm
