@@ -1,0 +1,84 @@
+<div class="card">
+  <div class="card-body">
+    <h2>New Birthday</h2>
+    <form
+      [formGroup]="newPersonForm"
+      (ngSubmit)="handleFormSubmit(newPersonForm.value)"
+    >
+      <div>
+        <label class="form-label"
+          >First Name <span class="text-danger">*</span></label
+        >
+        <input type="text" class="form-control" formControlName="firstName" />
+        <div class="text-danger form-text mt-0 error-message">
+          <span
+            *ngIf="
+              newPersonForm.get('firstName')?.invalid &&
+              newPersonForm.get('firstName')?.touched
+            "
+            >First name is required</span
+          >
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName" />
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-12 form-group">
+          <label class="form-label"
+            >Day <span class="text-danger">*</span></label
+          >
+          <select
+            name="day"
+            id="day"
+            class="form-control"
+            formControlName="day"
+          >
+            <option *ngFor="let d of days" [ngValue]="d">{{ d }}</option>
+          </select>
+        </div>
+
+        <div class="col-lg-4 col-md-12 form-group">
+          <label class="form-label"
+            >Month <span class="text-danger">*</span></label
+          >
+          <select
+            name="month"
+            id="month"
+            class="form-control"
+            formControlName="month"
+          >
+            <option *ngFor="let m of months" [ngValue]="m">{{ m }}</option>
+          </select>
+        </div>
+
+        <div class="col-lg-4 col-md-12 form-group">
+          <label class="form-label">Year</label>
+          <select
+            name="year"
+            id="year"
+            class="form-control"
+            formControlName="year"
+          >
+            <option [ngValue]="null">None</option>
+            <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
+          </select>
+        </div>
+        <div class="text-danger form-text error-message mb-2">
+          <span *ngIf="!validDate">Invalid Date</span>
+        </div>
+        <!--        <div *ngIf="!validDate" class="text-danger form-text">Invalid Date</div>-->
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary ms-auto float-end"
+        [disabled]="newPersonForm.invalid || !validDate"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

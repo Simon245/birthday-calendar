@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "assets/css/variables";
+body {
+  color: $body-color;
+  background-color: $background;
+}
+
+.error-message {
+  height: 1rem;
+}
